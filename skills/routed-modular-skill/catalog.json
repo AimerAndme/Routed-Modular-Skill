@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "modules": [
+    {
+      "id": "text-length",
+      "when": "统计文本的 Unicode 码点数量，包括空格；不是单词数或视觉字符数",
+      "guide": "modules/text-length/GUIDE.md",
+      "entrypoint": "modules/text-length/scripts/run.py"
+    },
+    {
+      "id": "text-uppercase",
+      "when": "使用 Unicode 大写规则转换文本，非字母内容保留",
+      "guide": "modules/text-uppercase/GUIDE.md",
+      "entrypoint": "modules/text-uppercase/scripts/run.py"
+    }
+  ]
+}
