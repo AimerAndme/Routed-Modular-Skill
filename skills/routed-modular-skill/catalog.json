@@ -1,17 +1,23 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "modules": [
     {
       "id": "text-length",
       "when": "统计文本的 Unicode 码点数量，包括空格；不是单词数或视觉字符数",
       "guide": "modules/text-length/GUIDE.md",
-      "entrypoint": "modules/text-length/scripts/run.py"
+      "entrypoint": "modules/text-length/scripts/run.py",
+      "input_schema": {"type": "object", "required": ["text"], "additionalProperties": false, "properties": {"text": {"type": "string"}}},
+      "output_schema": {"type": "object", "required": ["length"], "additionalProperties": false, "properties": {"length": {"type": "integer"}}},
+      "hooks": {"pre": ["validate-input-schema"], "post": ["validate-output-schema"], "on_error": ["record-error"]}
     },
     {
       "id": "text-uppercase",
       "when": "使用 Unicode 大写规则转换文本，非字母内容保留",
       "guide": "modules/text-uppercase/GUIDE.md",
-      "entrypoint": "modules/text-uppercase/scripts/run.py"
+      "entrypoint": "modules/text-uppercase/scripts/run.py",
+      "input_schema": {"type": "object", "required": ["text"], "additionalProperties": false, "properties": {"text": {"type": "string"}}},
+      "output_schema": {"type": "object", "required": ["text"], "additionalProperties": false, "properties": {"text": {"type": "string"}}},
+      "hooks": {"pre": ["validate-input-schema"], "post": ["validate-output-schema"], "on_error": ["record-error"]}
     }
   ]
 }
